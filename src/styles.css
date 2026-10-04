@@ -51,6 +51,17 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-positive: var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative: var(--negative);
+  --color-negative-soft: var(--negative-soft);
+  --color-neutral: var(--neutral);
+  --color-neutral-soft: var(--neutral-soft);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -62,31 +73,41 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.75rem;
+  --background: oklch(0.975 0.006 85);
+  --foreground: oklch(0.2 0.03 250);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.2 0.03 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --popover-foreground: oklch(0.2 0.03 250);
+  --primary: oklch(0.42 0.09 205);
+  --primary-foreground: oklch(0.98 0.01 200);
+  --secondary: oklch(0.94 0.012 85);
+  --secondary-foreground: oklch(0.25 0.03 250);
+  --muted: oklch(0.95 0.008 85);
+  --muted-foreground: oklch(0.5 0.025 250);
+  --accent: oklch(0.93 0.04 200);
+  --accent-foreground: oklch(0.3 0.07 205);
+  --destructive: oklch(0.6 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.9 0.01 85);
+  --input: oklch(0.88 0.012 85);
+  --ring: oklch(0.55 0.09 205);
+  --positive: oklch(0.62 0.13 160);
+  --positive-soft: oklch(0.94 0.045 160);
+  --negative: oklch(0.63 0.17 28);
+  --negative-soft: oklch(0.94 0.04 28);
+  --neutral: oklch(0.7 0.11 80);
+  --neutral-soft: oklch(0.95 0.045 85);
+  --hero: oklch(0.22 0.04 230);
+  --hero-foreground: oklch(0.97 0.01 85);
+  --gradient-hero: radial-gradient(1200px 500px at 85% -10%, oklch(0.45 0.1 200 / 0.55), transparent 60%), radial-gradient(800px 400px at 0% 110%, oklch(0.55 0.13 160 / 0.3), transparent 60%), oklch(0.22 0.04 230);
+  --shadow-card: 0 1px 2px oklch(0.2 0.03 250 / 0.04), 0 8px 24px -12px oklch(0.2 0.03 250 / 0.12);
+  --chart-1: oklch(0.62 0.13 160);
+  --chart-2: oklch(0.63 0.17 28);
+  --chart-3: oklch(0.7 0.11 80);
+  --chart-4: oklch(0.42 0.09 205);
+  --chart-5: oklch(0.6 0.08 250);
   --sidebar: oklch(0.984 0.003 247.858);
   --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.208 0.042 265.755);
@@ -142,3 +163,17 @@
     color: var(--color-foreground);
   }
 }
+
+@layer base {
+  body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility bg-hero { background: var(--gradient-hero); color: var(--hero-foreground); }
+@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility text-hero-muted { color: oklch(0.97 0.01 85 / 0.7); }
+@utility border-hero { border-color: oklch(0.97 0.01 85 / 0.18); }
+@utility bg-hero-glass { background: oklch(0.97 0.01 85 / 0.06); backdrop-filter: blur(8px); }
+@utility animate-rise { animation: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
