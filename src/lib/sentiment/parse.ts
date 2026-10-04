@@ -130,7 +130,7 @@ function parseChunk(chunk: string): RawReview {
   const by = s.match(/[—–-]\s*@?([A-Z][\w.]*(?:\s[A-Z][\w.]*)?)\s*$/);
   if (by && !source) { source = by[1]; s = s.slice(0, by.index); }
   const d = findDate(s);
-  s = d.rest.replace(/\b(?:date|posted)\s*[:=]\s*/i, "").replace(/^[\s|,;:-]+|[\s|,;-]+$/g, "").replace(/\s{2,}/g, " ");
+  s = d.rest.replace(/\b(?:date|posted)\s*[:=]\s*/i, "").replace(/^[\s|,;:—–-]+|[\s|,;—–-]+$/g, "").replace(/\s{2,}/g, " ");
   return { text: s.replace(/^["“]|["”]$/g, "").trim(), date: d.date, source };
 }
 
