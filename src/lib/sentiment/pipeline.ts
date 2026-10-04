@@ -34,7 +34,7 @@ export async function runAnalysis(opts: { text: string; fileName: string; contex
     fileName: opts.fileName,
     engine,
     createdAt: new Date().toISOString(),
-    reviews: raw.map((r, i) => ({ ...r, ...results[i], id: i + 1 })),
+    reviews: raw.map((r, i) => ({ ...r, ...results[i]!, id: i + 1 })),
   };
 }
 
